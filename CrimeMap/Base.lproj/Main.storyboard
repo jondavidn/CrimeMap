@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CrimeMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,62 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rW-f4-Gua">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.8105111975" blue="0.047844504459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Rockford Crime Map" id="d0A-Jj-4ab"/>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WOO-Wf-i0A">
+                                <rect key="frame" x="0.0" y="44" width="600" height="465"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 24 Hours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1c-KF-lDr">
+                                <rect key="frame" x="20" y="517" width="168" height="25"/>
+                                <color key="backgroundColor" red="1" green="0.8105111975" blue="0.047844504459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="168" id="s2c-Mi-S2g"/>
+                                    <constraint firstAttribute="height" constant="25" id="yHV-Rj-uNK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="aDe-vk-vbI">
+                                <rect key="frame" x="18" y="550" width="564" height="31"/>
+                                <color key="backgroundColor" red="1" green="0.8105111975" blue="0.047844504459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="DateSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="ar6-CN-BP5"/>
+                                    <action selector="DateSliderUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2mb-mB-auO"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.8105111975" blue="0.047844504459999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="9rW-f4-Gua" firstAttribute="trailing" secondItem="WOO-Wf-i0A" secondAttribute="trailing" id="754-Pz-y1S"/>
+                            <constraint firstItem="WOO-Wf-i0A" firstAttribute="top" secondItem="9rW-f4-Gua" secondAttribute="bottom" id="8I0-jV-aK2"/>
+                            <constraint firstItem="u1c-KF-lDr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Bk4-1P-CHG"/>
+                            <constraint firstItem="9rW-f4-Gua" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CtA-AV-BxR"/>
+                            <constraint firstItem="u1c-KF-lDr" firstAttribute="leading" secondItem="aDe-vk-vbI" secondAttribute="leading" id="GgM-gT-uQs"/>
+                            <constraint firstAttribute="bottom" secondItem="aDe-vk-vbI" secondAttribute="bottom" constant="20" symbolic="YES" id="HJc-BS-DM1"/>
+                            <constraint firstItem="9rW-f4-Gua" firstAttribute="leading" secondItem="WOO-Wf-i0A" secondAttribute="leading" id="Lp5-Kx-Dy0"/>
+                            <constraint firstItem="9rW-f4-Gua" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZCb-Jr-xol"/>
+                            <constraint firstItem="u1c-KF-lDr" firstAttribute="top" secondItem="WOO-Wf-i0A" secondAttribute="bottom" constant="8" symbolic="YES" id="jUj-Xo-2xZ"/>
+                            <constraint firstItem="aDe-vk-vbI" firstAttribute="top" secondItem="u1c-KF-lDr" secondAttribute="bottom" constant="8" symbolic="YES" id="q99-r8-dmp"/>
+                            <constraint firstItem="WOO-Wf-i0A" firstAttribute="centerX" secondItem="aDe-vk-vbI" secondAttribute="centerX" id="qyN-hr-JK6"/>
+                            <constraint firstAttribute="trailing" secondItem="9rW-f4-Gua" secondAttribute="trailing" id="s15-8p-XzR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblCrimeRange" destination="u1c-KF-lDr" id="dgO-dS-4Z8"/>
+                        <outlet property="mapView" destination="WOO-Wf-i0A" id="KQg-iF-tGG"/>
+                        <outlet property="navigationBar" destination="9rW-f4-Gua" id="iJZ-6b-73C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="504" y="418"/>
         </scene>
     </scenes>
 </document>
